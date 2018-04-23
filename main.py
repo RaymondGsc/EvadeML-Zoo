@@ -17,17 +17,17 @@ from tensorflow.python.platform import flags
 
 FLAGS = flags.FLAGS
 
-flags.DEFINE_string('dataset_name', 'MNIST', 'Supported: MNIST, CIFAR-10, ImageNet.')
-flags.DEFINE_string('model_name', 'cleverhans', 'Supported: cleverhans, cleverhans_adv_trained and carlini for MNIST; carlini and DenseNet for CIFAR-10;  ResNet50, VGG19, Inceptionv3 and MobileNet for ImageNet.')
+flags.DEFINE_string('dataset_name', 'ImageNet', 'Supported: MNIST, CIFAR-10, ImageNet.')
+flags.DEFINE_string('model_name', 'inceptionv3', 'Supported: cleverhans, cleverhans_adv_trained and carlini for MNIST; carlini and DenseNet for CIFAR-10;  ResNet50, VGG19, Inceptionv3 and MobileNet for ImageNet.')
 
 flags.DEFINE_boolean('select', True, 'Select correctly classified examples for the experiement.')
 flags.DEFINE_integer('nb_examples', 100, 'The number of examples selected for attacks.')
 flags.DEFINE_boolean('balance_sampling', False, 'Select the same number of examples for each class.')
 flags.DEFINE_boolean('test_mode', False, 'Only select one sample for each class.')
 
-flags.DEFINE_string('attacks', "FGSM?eps=0.1;BIM?eps=0.1&eps_iter=0.02;JSMA?targeted=next;CarliniL2?targeted=next&batch_size=100&max_iterations=1000;CarliniL2?targeted=next&batch_size=100&max_iterations=1000&confidence=2", 'Attack name and parameters in URL style, separated by semicolon.')
+flags.DEFINE_string('attacks', "FGSM?eps=0.1;BIM?eps=0.1&eps_iter=0.02;CarliniL2?targeted=next&batch_size=100&max_iterations=1000;CarliniL2?targeted=next&batch_size=100&max_iterations=1000&confidence=2", 'Attack name and parameters in URL style, separated by semicolon.')
 flags.DEFINE_float('clip', -1, 'L-infinity clip on the adversarial perturbations.')
-flags.DEFINE_boolean('visualize', True, 'Output the image examples for each attack, enabled by default.')
+flags.DEFINE_boolean('visualize', False, 'Output the image examples for each attack, enabled by default.')
 
 flags.DEFINE_string('robustness', '', 'Supported: FeatureSqueezing.')
 
